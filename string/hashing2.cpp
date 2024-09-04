@@ -41,7 +41,6 @@ void prec() {
   }
 }
 
-
 pair<int, int> rightshift(pair<int,int>a, int len) {
   int t1 = 1LL * a.first * pw[len].first % MOD1;
   int t2 = 1LL * a.second * pw[len].second % MOD2; 
@@ -49,7 +48,6 @@ pair<int, int> rightshift(pair<int,int>a, int len) {
 } // to add we must place 2nd word after first so
   // rightshifting the 2nd word so that we can place 
   // first word to the left.
-
 
 pair<int, int> concat(pair<int,int>a, pair<int,int>b, int len) {
   pair<int, int> rightshiftedB = rightshift(b, len); 
@@ -86,8 +84,6 @@ struct Hashing {
     ans.second = (hs[r].second - hs[l - 1].second + MOD2) * 1LL * ipw[l - 1].second % MOD2;
     return ans;
   }  
-
-  
 };
 
 void solve() { 
