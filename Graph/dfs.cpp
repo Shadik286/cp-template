@@ -19,7 +19,7 @@ using namespace __gnu_pbds;
  
 #define print_case cout << "Case " << ++cas << ": "
 #define mod (int) 1e9+7
-const int N = 11000;
+const int N = 2e5 + 7;
 const int INF = INT64_MAX;
 using namespace std;
 
