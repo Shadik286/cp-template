@@ -25,13 +25,15 @@ using namespace std;
 
 template <typename T>
 using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
-struct SGMT {
-    int a[4*N], sol[4*N];  
+struct SGMT { 
+    vector<int>a, sol;
     int n;  
-    // 1 indexed.
-    void rcv_n(int x) {
-      n = x;
-    } 
+    // 1 indexed. 
+    SGMT (int n) {
+      this->n = n; 
+      a.resize(4 * (n + 2)); sol.resize(n + 2);
+    }
+    
     void input() {
       for(int i = 1; i <= n; i++) cin >> sol[i];
     }
@@ -75,10 +77,11 @@ struct SGMT {
     // problem requirments//////////// 
    
 
-}seg_tree;
+};
 void solve() { 
-  int n, q; cin >> n >> q; 
-  seg_tree.rcv_n(n);
+  int n, q; cin >> n >> q;  
+  SGMT seg_tree(n);
+  // seg_tree.rcv_n(n);
   seg_tree.input(); 
   seg_tree.make_seg_tree(1, 1, n); 
   while(q--) {
