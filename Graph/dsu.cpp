@@ -27,13 +27,11 @@ template <typename T>
 using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 
 struct DSU { 
-  vector<int>par, sz;
-  void rcv_n(int n) {
+  vector<int>par, sz; 
+  DSU(int n) {
     par.resize(n + 10), sz.resize(n + 10);
+    for(int i = 1; i <= n; i++) par[i] = i, sz[i] = 1;
   }
-  void build_dsu(int v) {
-    par[v] = v; sz[v] = 1;
-  }  
   int find_par(int v) {
     if(par[v] == v) return v;
     return par[v] = find_par(par[v]);
@@ -47,30 +45,28 @@ struct DSU {
     }
   }
 
-} dsu;
+};
 
 void solve() { 
-  int n, k; cin >> n >> k;
-  string s, t; cin >> s >> t; 
-  dsu.rcv_n(n);
-  for(int i = 0; i < n; i++) dsu.build_dsu(i);
-  map<int, string>mp, mp2;
-  for(int i = 0; i < n; i++) {
-    if(i + k < n) dsu.union_(i, i + k);
-    if(i + k + 1 < n) dsu.union_(i, i + k + 1);
-  }
-  for(int i = 0; i < n; i++) {
-    int ind = dsu.find_par(i);
-    mp[ind].push_back(s[i]); 
-    mp2[ind].push_back(t[i]);
-  } 
-  //for(auto i : mp) cout <<i.first << ' ' <<i.second << '\n'; 
-  for(auto i : mp) {
-    string a = i.second, b = mp2[i.first];
-    sort(a.begin(), a.end()), sort(b.begin(), b.end());
-    if(a != b) return void(cout << "NO");
-  }
-  cout << "Yes";
+    int n, k; cin >> n >> k;
+    string s, t; cin >> s >> t;
+    DSU dsu(n);
+    map<int, string>mp, mp2;
+    for(int i = 0; i < n; i++) {
+      if(i + k < n) dsu.union_(i, i + k);
+      if(i + k + 1 < n) dsu.union_(i, i + k + 1);
+    }
+    for(int i = 0; i < n; i++) {
+      int ind = dsu.find_par(i);
+      mp[ind].push_back(s[i]);
+      mp2[ind].push_back(t[i]);
+    } 
+    for(auto i : mp) {
+      string a = i.second, b = mp2[i.first];
+      sort(a.begin(), a.end()), sort(b.begin(), b.end());
+      if(a != b) return void(cout << "No");
+    }
+    cout << "Yes";
 
 }
  // https://codeforces.com/contest/1800/problem/E2
