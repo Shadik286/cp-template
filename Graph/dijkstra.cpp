@@ -26,14 +26,20 @@ using namespace std;
 template <typename T>
 using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 
-struct dijestra {
+
+vector<pair<int,int>> adj[N];
+struct DIJKSTRA {
     int n, m;
-    vector<pair<int,int>> adj[N];
-    int distance[N], vis[N], par[N];
-    dijestra (){}
-    void getInput (int nn, int mm) {  
-      clr();
-      n = nn, m = mm;
+    vector<int>distance, vis, par;
+    
+    DIJKSTRA (int n, int m){
+      this->n = n, this->m = m;
+      distance.resize(n + 5, INF); 
+      vis.resize(n + 5, 0); par.resize(n + 5); 
+      for(int i = 0; i <= n; i++) adj[i].clear();
+    } 
+
+    void getInput () {  
       for(int i = 0; i < m; i++) {
         int a, b, c; cin >> a >> b >> c;
         adj[a].push_back({b, c});
@@ -41,11 +47,7 @@ struct dijestra {
       }
     }  
 
-    void makeDistanceZero() {
-      for(int i = 0; i <= n; i++) distance[i] = INF;
-    }
-    void runDijestra(int Start) {
-       makeDistanceZero();
+    void run(int Start) {
        priority_queue<pair<long long, int>, vector<pair<long long, int>>, greater<pair<long long, int>>> q;
        q.push({0, Start}); distance[Start] = 0;
        par[Start] = Start;
@@ -73,21 +75,16 @@ struct dijestra {
       // change as problem required
       if(distance[n] == INF) cout << "Impossible";
       else cout << distance[n];
-     
     }
-     
-    void clr() {
-      for(int i = 0; i <= n + 2; i ++) adj[i].clear(), vis[i] = 0;
-    }
-
-}hs; 
+}; 
 
 
 void solve() {  
   print_case;
-  int n, m; cin >> n>> m;
-  hs.getInput(n, m);
-  hs.runDijestra(1); 
+  int n, m; cin >> n>> m; 
+  DIJKSTRA hs(n, m);
+  hs.getInput();
+  hs.run(1); 
   hs.printing();
 
 }
