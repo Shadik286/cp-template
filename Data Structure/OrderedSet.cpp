@@ -4,7 +4,11 @@ using namespace __gnu_pbds;
 template <typename T>
 using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 
+//Fix go to the dir -> C:\MinGW\lib\gcc\mingw32\8.2.0\include\c++\ext\pb_ds\detail\resize_policy
 
+//There u will see a file similar to -> "hash_standard_resize_policy_imp.hpp0000644"
+
+//Rename it to hash_standard_resize_policy_imp.hpp
 // find_by_order(k): It returns to an iterator to the kth element (counting from zero) in the set in O(logn) time.To find the first element k must be zero.
 //   Let us assume we have a set s : {1, 5, 6, 17, 88}, then :  
 //   *(s.find_by_order(2)) : 3rd element in the set i.e. 6
