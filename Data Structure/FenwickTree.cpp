@@ -5,15 +5,15 @@ struct FenwickTree {
       fen.resize(n + 1, 0); this->n = n;
     }
     FenwickTree(vector<int>&a) {
-      this->n = a.size(); 
-      fen.resize(n + 1, 0);
+      this->n = a.size() + 1; 
+      fen.resize(n + 2, 0);
       for(int i = 1; i <= a.size(); i++) {
-        update(i, a[i - 1]);
+        add(i, a[i - 1]);
       }
     }
-    void update(int i, int add) {
+    void add(int i, int x) {
       while(i <= n) {
-        fen[i] += add; 
+        fen[i] += x; 
         i += (i & (-i));
       }
     }
@@ -28,5 +28,4 @@ struct FenwickTree {
     int sum(int l, int r) {
       return sum(r) - sum(l - 1);
     }
-
 };
