@@ -1,0 +1,25 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Compile and run",
+      "type": "shell",
+      "command": "bash -c 'g++ \"${file}\" -o a && ./a < input.txt > output.txt && rm a'",
+      "presentation": {
+        "reveal": "never"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}
+Open VS Code.
+Press Ctrl + , to open Settings.
+Search for:
+terminal.integrated.defaultProfile.linux
+Click "Edit in settings.json" and set it to Bash:
+"terminal.integrated.defaultProfile.linux": "bash"
+Restart VS Code.
+✅ Now all new VS Code terminals will open in Bash.
