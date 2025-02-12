@@ -1,0 +1,22 @@
+// Use VS code like sublime 
+// Note: It will not work if your default terminal is Powershell. Make it "cmd" then it will work.
+// To change default terminal() : Hit clt+shift+p->write:default terminal->change it to cmd.
+// Open terminal in VS and then press ctrl+shift+p -> Search for terminal, select default terminal and change it to cmd.
+// set a shortcut from shortcut manu -> change run build task
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Compile and run",
+      "type": "shell",
+      "command": "g++ \"${file}\" && a < input.txt > output.txt && del a.exe",
+      "presentation": {
+        "reveal": "never"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}
