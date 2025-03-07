@@ -20,3 +20,15 @@ using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statisti
 
 for multi order set -> using ordered_set = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
                                                               less changes to less_equal
+Upper_bound becomes lower_bound and vice versa
+
+int FirstIdx(ordered_set<int> &s,int x){ //this function returns the first index of the value (x)..(0 indexing).
+    return (s.order_of_key(x));
+}
+int LastIdx(ordered_set<int> &s,int x){ //this function returns the last index of the value (x)..(0 indexing).
+    if(*s.find_by_order((int)s.size() - 1) == x) return (int)s.size() - 1;
+    return FirstIdx(s,*s.lower_bound(x))-1;
+}
+int Count(ordered_set<int> &s,int x) { // this function will return number of x.
+    return LastIdx(s, x) - FirstIdx(s, x) + 1;
+}
