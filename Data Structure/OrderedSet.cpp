@@ -32,3 +32,4 @@ int LastIdx(ordered_set<int> &s,int x){ //this function returns the last index o
 int Count(ordered_set<int> &s,int x) { // this function will return number of x.
     return LastIdx(s, x) - FirstIdx(s, x) + 1;
 }
+ro erase -> s.erase(s.upper_bound(x));
