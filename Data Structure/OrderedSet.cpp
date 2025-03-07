@@ -17,3 +17,6 @@ using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statisti
 //   Let us assume we have a set s : {1, 5, 6, 17, 88}, then :
 //   s.order_of_key(6) : Count of elements strictly smaller than 6 is 2.
 //   s.order_of_key(25) : Count of elements strictly smaller than 25 is 4.
+
+for multi order set -> using ordered_set = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
+                                                              less changes to less_equal
