@@ -21,7 +21,8 @@ void prec() {}
 struct Trie{
     struct node {
         node* childs[26];
-        int cnt = 0;
+        int cnt = 0; 
+        bool ends = 0;
     };
     node* root;
     Trie() {
@@ -37,6 +38,7 @@ struct Trie{
             cur = cur->childs[s[i] - 'a']; 
             cur->cnt++;
         } 
+        cur->ends = true; 
     }
 
     int search(string s) { 
@@ -48,6 +50,7 @@ struct Trie{
             cur = cur->childs[s[i] - 'a'];
         } 
         return cur->cnt;
+        //to check if s is in the trie return cur->ends;
     }
 
 };
