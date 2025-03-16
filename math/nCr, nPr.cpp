@@ -1,5 +1,5 @@
 int fact[N], invfact[N]; 
-int M = (int)(1e9+7);
+int M = (int)(1e9 + 7);
 int power(int base, int pwr, int mod) {
     int ans = 1;
     while(pwr) {
@@ -15,8 +15,9 @@ void factorial() {
     for(int i = 1; i < N; i++) {
         fact[i] = (fact[i - 1] * i) % M;
     }
-    for(int i = 0; i < N; i++) {
-        invfact[i] = power(fact[i], M - 2, M) % M;
+    invfact[N-1] = power(fact[N-1], M-2, M);
+    for(int i = N - 2; i >= 0; i--) {
+        invfact[i] = ((invfact[i + 1])*(i+1))%M;
     }
 } 
 int ncr(int n, int r) {
@@ -27,3 +28,6 @@ int npr(int n, int r) {
     if(n < r) return 0;
     return fact[n]*invfact[n - r]%M;
 }
+void prec() {
+    factorial();
+} 
