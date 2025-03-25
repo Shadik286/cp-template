@@ -39,5 +39,5 @@ void solve() {
     cout << ans;
 }
 //https://cses.fi/problemset/task/2185/
-
+//https://www.spoj.com/problems/MOMOS/en/
 
