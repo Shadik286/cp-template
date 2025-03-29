@@ -41,3 +41,4 @@ void solve() {
 //https://cses.fi/problemset/task/2185/
 //https://www.spoj.com/problems/MOMOS/en/
 //https://leetcode.com/problems/ugly-number-iii/submissions/1587470824/
+//https://atcoder.jp/contests/abc246/tasks/abc246_f
