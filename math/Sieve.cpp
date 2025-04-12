@@ -9,7 +9,8 @@ void prec() {
         } 
     } 
 } 
-// Below function returns the primes that divides number n. (Filters out the primes that are not divisors of n)
+// Below function returns the primes that divides number n. (Filters out the primes that are not divisors of n) 
+//https://codeforces.com/problemset/problem/1766/D to solve this problem below function is needed.
 set<int>dv(int n) { 
     set<int>tmp;  
     while(n > 1) {  
