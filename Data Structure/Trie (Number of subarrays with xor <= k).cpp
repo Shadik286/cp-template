@@ -44,7 +44,7 @@ struct trie{
         cur->ends = true;
     } 
 
-    //Number of subarrays with xor <= k
+    //Number of subarrays with xor < k
     int query(int x, int k) {
         node* cur = root;
         int ans = 0;
