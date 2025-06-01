@@ -12,6 +12,7 @@ int phi(int n) {
         result -= result / n;
     return result;
 }
+//https://lightoj.com/problem/mathematically-hard
 void phi_1_to_n(int n) {
     // O(nloglogn) // Pre calc upto n
     vector<int> phi(n + 1);
