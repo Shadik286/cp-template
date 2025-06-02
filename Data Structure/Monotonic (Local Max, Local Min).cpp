@@ -17,7 +17,15 @@ map<int, int> monotonic(vector<int>&v, int n) {
 problem: https://codeforces.com/contest/817/problem/D
 solve: 8 9 1 2 3 4 1 7 for this first 1 covers whole array, so does 2nd 1 but it would repeat some subarrays, to avoid that for second 1 range should be 2, 3, 4, 1, 7
         so kept the index of first arriving numbers in an array and when get it again, replace left most by previously arrived index if its within the range (l = max(l, indx[num])
-
+for example: https://leetcode.com/problems/sum-of-subarray-minimums/description/ 
+solution: 
+    for(int i = 0; i < n; i++) {
+            int l = range[i].first, r = range[i].second;
+            if(mp.count(sol[i])) {
+                l = max(l, mp[sol[i]] + 1); //if value is repeating, ignore the indexes already covered by previous arrivals
+            } 
+            mp[sol[i]] = i;
+        }
 problem: https://atcoder.jp/contests/agc005/tasks/agc005_b
 solve: 
 void solve() { 
