@@ -14,3 +14,37 @@ map<int, int> monotonic(vector<int>&v, int n) {
 
     //https://codeforces.com/contest/547/problem/B
 }
+
+
+problem: https://atcoder.jp/contests/agc005/tasks/agc005_b
+solve: 
+void solve() { 
+    int n; cin >> n;
+    vector<int>sol(n); for(auto &i: sol) cin >> i;
+    pair<int,int>range[n + 1] = {{0, 0}};
+    stack<pair<int,int>>st;
+    // calculating the nearest left bigger number
+    for(int i = 0; i < n; i++) {
+        while(st.size() and st.top().first >= sol[i]) st.pop();
+        if(st.size()) range[i].first = st.top().second + 1;
+        else range[i].first = 0;
+        st.push({sol[i], i});
+    }
+    st = stack<pair<int, int>>();
+    // calculating the nearest right bigger number
+    for(int i = n - 1; i >= 0; i--) {
+        while(st.size() and st.top().first >= sol[i]) st.pop();
+        if(st.size()) range[i].second = st.top().second - 1;
+        else range[i].second = n - 1;
+        st.push({sol[i], i});
+    } 
+    // range[i] = l, r. where sol[i] is the local min in the range of l, r
+    int ans = 0;
+    for(int i = 0; i < n; i++) {
+        int l = range[i].first, r = range[i].second;
+        int left = i - l, right = r - i + 1;
+        ans += (left * right * sol[i]); 
+        ans += ((right) * sol[i]);
+    }
+    cout << ans;
+}
