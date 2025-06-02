@@ -14,7 +14,9 @@ map<int, int> monotonic(vector<int>&v, int n) {
 
     //https://codeforces.com/contest/547/problem/B
 }
-
+problem: https://codeforces.com/contest/817/problem/D
+solve: 8 9 1 2 3 4 1 7 for this first 1 covers whole array, so does 2nd 1 but it would repeat some subarrays, to avoid that for second 1 range should be 2, 3, 4, 1, 7
+        so kept the index of first arriving numbers in an array and when get it again, replace left most by previously arrived index if its within the range (l = max(l, indx[num])
 
 problem: https://atcoder.jp/contests/agc005/tasks/agc005_b
 solve: 
