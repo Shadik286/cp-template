@@ -31,3 +31,16 @@ int npr(int n, int r) {
 void prec() {
     factorial();
 } 
+
+
+int ncr(int n, int r) {
+    //When n is very big but r is 1e6 guaranteed
+    int ans=1;
+    for(int i=1;i<=r;i++){
+        //mod ans if needed.
+        ans=ans*(n-i+1)/i;
+    } 
+    return ans;
+}
+
+
