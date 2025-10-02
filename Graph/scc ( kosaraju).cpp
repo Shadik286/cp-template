@@ -24,12 +24,14 @@ void solve() {
                 dfs1(i);
             }
         }
-        vis.assign(n + 1, false);
-        function<void(int)> dfs2 = [&](int u) -> void {
+        vis.assign(n + 1, false); 
+        vector<int>ans(n + 1, 0);
+        function<void(int, int)> dfs2 = [&](int u, int scc) -> void {  
+            ans[u] = scc;
             vis[u] = true;
             for(auto v : revadj[u]) {
                 if(!vis[v]) {
-                    dfs2(v);
+                    dfs2(v, scc);
                 }
             }
         };
@@ -39,12 +41,14 @@ void solve() {
             st.pop();
             if(!vis[u]) {
                 scc_count++;
-                dfs2(u);
+                dfs2(u, scc_count);
             }
         }
-        cout << scc_count << "\n";
+        cout << scc_count << "\n"; 
+        for(int i = 1; i <= n; i++) {
+            cout << ans[i] << " ";
+        }
     };
     kosarajus();
      
 }
- 
